@@ -1,48 +1,46 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { Strawberry } from './Icons';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home" },
+    { name: "Ucapan", href: "#wishes" },
+    { name: "Sajian", href: "#treats" },
+    { name: "Pesan", href: "#message" },
   ];
 
-  // Fungsi scroll beranimasi mulus dengan kompensasi tinggi navbar
+  // Scroll mulus dengan kompensasi tinggi navbar
   const handleScroll = (e, href) => {
     e.preventDefault();
-    setIsOpen(false); // Tutup menu jika di HP
+    setIsOpen(false);
 
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      const navOffset = 70; // Offset kompensasi tinggi navbar agar judul tidak tertutup
+      const navOffset = 70;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-100">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <motion.a
-          href="#about"
-          onClick={(e) => handleScroll(e, '#about')}
+          href="#home"
+          onClick={(e) => handleScroll(e, '#home')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 font-bold text-lg text-white cursor-pointer"
+          className="flex items-center gap-2 font-bold text-lg text-pink-950 cursor-pointer"
         >
-          <Terminal className="text-sky-400" size={22} />
-          <span>Dev<span className="text-sky-400">Portfolio</span></span>
+          <Strawberry size={26} />
+          <span>HBD <span className="text-pink-500">Kimi</span></span>
         </motion.a>
 
         {/* Desktop Menu */}
@@ -54,28 +52,18 @@ export default function Navbar() {
               onClick={(e) => handleScroll(e, link.href)}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors cursor-pointer"
+              className="text-sm font-medium text-pink-900/80 hover:text-pink-500 transition-colors cursor-pointer"
             >
               {link.name}
             </motion.a>
           ))}
-
-          {/* Tombol CTA */}
-          <motion.a
-            href="#contact"
-            onClick={(e) => handleScroll(e, '#contact')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors cursor-pointer shadow-md shadow-sky-500/20"
-          >
-            Hubungi Saya
-          </motion.a>
         </div>
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-slate-300 hover:text-white"
+          className="md:hidden text-pink-700 hover:text-pink-500"
+          aria-label="Menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -86,14 +74,14 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 flex flex-col gap-4"
+          className="md:hidden bg-white border-b border-pink-100 px-6 py-4 flex flex-col gap-4"
         >
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleScroll(e, link.href)}
-              className="text-slate-300 hover:text-sky-400 transition-colors cursor-pointer"
+              className="text-pink-900/80 hover:text-pink-500 transition-colors cursor-pointer"
             >
               {link.name}
             </a>

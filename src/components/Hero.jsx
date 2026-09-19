@@ -1,63 +1,48 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Mail } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { ArrowDown, Gift } from 'lucide-react';
+import { birthdayInfo } from '../data/portfolioData';
+import { Strawberry } from './Icons';
 import Lanyard from './Lanyard';
 
 export default function Hero() {
   return (
-    <section id="about" className="min-h-screen pt-24 pb-16 px-6 flex items-center max-w-6xl mx-auto">
+    <section id="home" className="min-h-screen pt-24 pb-16 px-6 flex items-center max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full">
-        
-        {/* Kolom Kiri: Teks & Info */}
+
+        {/* Kolom Kiri: Ucapan */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 z-10"
         >
-          <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-sky-400 uppercase bg-sky-950/60 border border-sky-800/50 rounded-full">
-            Tersedia untuk Proyek & Kolaborasi
+          <span className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-pink-600 uppercase bg-white/80 border border-pink-200 rounded-full shadow-sm">
+            <Gift size={14} /> Hari Spesial
           </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            Halo, saya <span className="text-sky-400">{personalInfo.name}</span>.
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-pink-950 tracking-tight leading-tight">
+            {birthdayInfo.headline},{' '}
+            <span className="relative inline-block text-pink-500">
+              {birthdayInfo.name}
+              <Strawberry size={40} className="absolute -top-6 -right-9 rotate-12 animate-bounce" />
+            </span>
+            !
           </h1>
-          <p className="mt-3 text-xl sm:text-2xl font-medium text-slate-400">
-            {personalInfo.role}
-          </p>
-          <p className="mt-6 text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">
-            {personalInfo.bio}
+          <p className="mt-6 text-base sm:text-lg text-pink-900/70 leading-relaxed max-w-xl">
+            {birthdayInfo.tagline}
           </p>
 
-          {/* Tombol Aksi */}
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <a
-              href="#projects"
-              className="flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-sky-500/20 transition-all"
+              href="#wishes"
+              className="flex items-center gap-2 px-6 py-3 bg-pink-500 hover:bg-pink-400 text-white font-bold rounded-xl shadow-lg shadow-pink-500/30 transition-all"
             >
-              Lihat Portofolio <ArrowRight size={18} />
+              Lihat Ucapan <ArrowDown size={18} />
             </a>
             <a
-              href="#contact"
-              className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition-all"
+              href="#treats"
+              className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-pink-50 text-pink-600 font-semibold rounded-xl border border-pink-200 transition-all"
             >
-              <Download size={18} /> Unduh CV
-            </a>
-          </div>
-
-          {/* Social Icons */}
-          <div className="mt-10 flex gap-5 text-slate-400">
-            <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors">
-              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
-            </a>
-            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors">
-              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/>
-              </svg>
-            </a>
-            <a href={`mailto:${personalInfo.email}`} className="hover:text-sky-400 transition-colors">
-              <Mail size={24} />
+              Kue & Minuman
             </a>
           </div>
         </motion.div>
